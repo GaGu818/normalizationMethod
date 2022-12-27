@@ -1,0 +1,11 @@
+Quantile normalization is a method for normalizing gene expression data, which is commonly used in the field of bioinformatics. The goal of quantile normalization is to ensure that different datasets have the same distribution, so that they can be compared directly.
+
+To perform quantile normalization, the data from each dataset is sorted in ascending order and divided into a series of quantiles. The mean expression value for each quantile is then calculated, and the expression values for each gene in each dataset are replaced with the corresponding mean expression value for that quantile. This results in each dataset having the same distribution of expression values, which allows for direct comparison of the datasets.
+
+Quantile normalization can be useful when comparing gene expression data from different sources, such as different microarray experiments or different types of samples. It can help to eliminate systematic biases and allow for more accurate comparison of the data.
+
+The provided code performs quantile normalization on a given data in the format of dataframe df. The first step is to sort the values in the dataframe by column, resulting in a new sorted dataframe df_sorted. Next, the mean value for each row of the sorted dataframe is calculated and stored in df_mean. The index of df_mean is then reset to a series of integers from 1 to the number of rows in the dataframe.
+
+Next, we use the rank method to compute the rank of each value in df, using the "min" method for handling ties. The resulting ranks are then stacked and cast to integers, and then mapped to the corresponding mean values in df_mean using the map function. The resulting series is then unstacked to create the final quantile normalized data in dataframe, which is returned by the function.
+
+Overall, we implement quantile normalization by first calculating the mean expression value for each quantile, and then replacing the expression values in the original dataframe with the corresponding mean values.
